@@ -2,6 +2,10 @@
 
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## 2.1.0
+
+- Add new method (authenticateWithAutologin)
+
 ## 2.0.0
 
 - Remove react components
