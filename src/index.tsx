@@ -1,3 +1,4 @@
 export * from './Login/helper';
-export * from './Login/auth';
+export { authenticate } from './Login/auth';
+export * from './Login/auth-with-autologin';
 export * from './Login/validate';

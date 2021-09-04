@@ -4,7 +4,7 @@
   "author": "Mohammad Talebkhah",
   "license": "MIT",
   "repository": {
-    "url": "git://github.com/talebkhah/pod-sso-pkce.git"
+    "url": "https://github.com/talebkhah/pod-sso-pkce.git"
   },
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",

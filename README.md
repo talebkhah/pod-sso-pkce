@@ -19,14 +19,15 @@ npm i pod-sso-pkce
 
 ## Methods
 
-| Method          | Description                                                                               |
-| --------------- | ----------------------------------------------------------------------------------------- |
-| authenticate    | To login to the account with the SSO POD                                                  |
-| validate        | To validate the user after returning from the SSO POD to your app and get an access token |
-| refreshToken    | To get a new access token after the current access token expires                          |
-| getAccessToken  | Get the user's current access token                                                       |
-| isAuthenticated | Checks if the user is logged in or not                                                    |
-| logout          | User logs out from the user account                                                       |
+| Method                    | Description                                                                               |
+| ------------------------- | ----------------------------------------------------------------------------------------- |
+| authenticate              | To login to the account with the SSO POD                                                  |
+| authenticateWithAutologin | To login to the account with the SSO POD by automatic login                               |
+| validate                  | To validate the user after returning from the SSO POD to your app and get an access token |
+| refreshToken              | To get a new access token after the current access token expires                          |
+| getAccessToken            | Get the user's current access token                                                       |
+| isAuthenticated           | Checks if the user is logged in or not                                                    |
+| logout                    | User logs out from the user account                                                       |
 
 <br />
 
@@ -38,6 +39,21 @@ npm i pod-sso-pkce
 | clientId       | string |             | 20200000egh98412ea0a164708f109210 |
 | redirectUrlSso | string |             | http://myapp.ir/validate          |
 | ssoScope       | string |             | profile email                     |
+
+After calling this method, your app will be redirected to the SSO POD.
+
+<br >
+
+### authenticateWithAutologin()
+
+| Parameter      | Type   | Description | Example                           |
+| -------------- | ------ | ----------- | --------------------------------- |
+| ssoURL         | string |             | https://accounts.pod.ir/          |
+| clientId       | string |             | 20200000egh98412ea0a164708f109210 |
+| redirectUrlSso | string |             | http://myapp.ir/validate          |
+| ssoScope       | string |             | profile email                     |
+#### Notice: You must enter 4 parameters in url query string: keyId, accessToken, timestamp, sign
+#### Read this link for more information: https://docs.pod.ir/v1.6.0.0/SSO/User/8660/autologin
 
 After calling this method, your app will be redirected to the SSO POD.
 
@@ -116,6 +132,26 @@ function App() {
   // ...
 }
 ```
+
+
+#### authenticateWithAutologin() Example
+sample address: http://myapp.ir/autologin?access_token=123&key_id=456&timestamp=789&signature=101112
+
+```jsx
+import { authenticateWithAutologin } from 'pod-sso-pkce';
+
+function App() {
+  const ssoURL = 'https://accounts.pod.ir/';
+  const clientId = '20200000egh98412ea0a164708f109210';
+  const redirectUrlSso = 'http://myapp.ir/validate';
+  const ssoScope = 'profile email';
+
+  // ...
+  authenticateWithAutologin(ssoURL, clientId, redirectUrlSso, ssoScope);
+  // ...
+}
+```
+
 
 #### validate() Example
 
