@@ -53,14 +53,8 @@ export const refreshToken = (sso: refreshTokenType): Promise<void> | void => {
 
 export const isAuthenticated = (): boolean => {
   const isAuthenticated = localStorage.getItem('isAuthenticated');
-  const access_token = localStorage.getItem('access_token');
-  const refresh_token = localStorage.getItem('refresh_token');
 
-  if (
-    isAuthenticated === 'true' &&
-    access_token?.length === 32 &&
-    refresh_token?.length === 32
-  ) {
+  if (isAuthenticated === 'true') {
     return true;
   }
 
